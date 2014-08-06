@@ -1,0 +1,43 @@
+# Build Environment
+reset_minion: true
+build_environment: Ubuntu 12.04
+
+# language setting
+language: ruby
+
+# version numbers
+rvm:
+ - 2.1.2
+env:
+ #- CI_REPORTS=shippable/testresults #COVERAGE_REPORTS=shippable/codecoverage
+
+#
+# Shippable will runs the gemfile. If anything in the gemfile depends on anything being installed on the file
+# system, you need to install it in the before_install
+#
+
+# before_install tag
+before_install:
+ # - gem update --system
+ # - gem --version
+ # - mkdir ~/Downloads
+ # - curl 'ftp://ftp.freetds.org/pub/freetds/stable/freetds-stable.tgz' -o ~/Downloads/freetds-stable.tgz
+ # - cd ~/Downloads
+ # - tar -zxvf freetds-stable.tgz
+ # - cd freetds-0.91/
+ # - ./configure
+ # - make
+ # - sudo make install
+
+
+# write the rspec tests to the output dir
+script:
+ # - spec -f JUnit -o shippable/testresults/results.xml
+ # - rake spec:mobile
+
+
+notifications:
+     email:
+         recipients:
+             - fmorales@francesmorales.com
+             
