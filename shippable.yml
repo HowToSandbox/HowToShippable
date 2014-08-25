@@ -35,7 +35,7 @@ before_install:
 # write the rspec tests to the output dir
 script:
   #- spec -f JUnit -o shippable/testresults/results.xml #this turns your spec results into something shipable understands
-  - rake spec:spec # Then just run all your things
+  - rake spec:HelloWorld # Then just run all your things
 
 
 notifications:
