@@ -21,27 +21,5 @@ namespace :spec do
     end
 
 
-    #######This rule runs file individually in the sandbox
-#######It expects a sandbox directory
-####### rake spec:security   will run the security_spec.rb file
 
-        rule(/spec:.+/) do |t|
-          name = t.name.gsub("spec:","")
-
-          path = File.join( File.dirname(__FILE__),'spec/sandbox','%s_spec.rb'%name )
-
-          if File.exist? path
-            Rake::TestTask.new(name) do |t|
-              t.test_files = [path]
-              t.libs = ["support"]
-            end
-
-            puts "\nRunning spec/%s_spec.rb"%[name]
-
-            Rake::Task[name].invoke
-          else
-            puts "File does not exist: %s"%path
-          end
-
-        end
 end
