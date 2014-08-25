@@ -19,13 +19,7 @@ namespace :spec do
       t.verbose = false
       t.test_files = FileList['spec/sandbox/*_spec.rb']
     end
-    Rake::TestTask.new do |t|
-      t.libs = ["support"]
-      t.name = :sandbox_spec
-      t.warning = false
-      t.verbose = false
-      t.test_files = FileList['spec/sandbox/sandbox_spec.rb']
-    end
+
 
     #######This rule runs file individually in the sandbox
 #######It expects a sandbox directory
