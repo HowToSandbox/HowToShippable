@@ -1,5 +1,5 @@
 # Build Environment
-reset_minion: true
+reset_minion: true #this throws away all the things and starts over. Otherwise your minion saves state between runs.
 build_environment: Ubuntu 12.04
 
 # language setting
@@ -18,8 +18,10 @@ env:
 
 # before_install tag
 before_install:
- # - gem update --system
- # - gem --version
+  - gem update --system
+  - gem --version  #Everything you do in the console will be in the log, so you can use this kind of thing to get information
+ 
+ ## This stuff is just here as an example of how to maipulate the file system if you need to
  # - mkdir ~/Downloads
  # - curl 'ftp://ftp.freetds.org/pub/freetds/stable/freetds-stable.tgz' -o ~/Downloads/freetds-stable.tgz
  # - cd ~/Downloads
@@ -32,12 +34,13 @@ before_install:
 
 # write the rspec tests to the output dir
 script:
- # - spec -f JUnit -o shippable/testresults/results.xml
- # - rake spec:mobile
+  - spec -f JUnit -o shippable/testresults/results.xml #this turns your spec results into something shipable understands
+  - rake spec:spec # Then just run all your things
 
 
 notifications:
      email:
          recipients:
-             - fmorales@francesmorales.com
-             
+             - you@yourorg.com
+             - someotherguy@someplace.com
+             #Whitespace counts in yml files
